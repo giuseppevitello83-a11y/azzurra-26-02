@@ -1,13 +1,12 @@
-import fs from "fs";
-import path from "path";
 import BookingCalendar from "@/components/BookingCalendar";
 import SearchForm from "@/components/SearchForm";
 import ContactForm from "@/components/ContactForm";
+import { getSiteContent } from "@/lib/contentStore";
+
+export const dynamic = "force-dynamic";
 
 export default function Home() {
-  const dbPath = path.join(process.cwd(), "src", "lib", "db.json");
-  const db = JSON.parse(fs.readFileSync(dbPath, "utf-8"));
-  const content = db.siteContent;
+  const content = getSiteContent();
 
   return (
     <div className="relative flex min-h-screen w-full flex-col scroll-smooth">

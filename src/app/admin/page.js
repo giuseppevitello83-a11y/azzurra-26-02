@@ -51,12 +51,15 @@ export default function AdminPage() {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(content),
             });
+            const data = await res.json();
             if (res.ok) {
-                setMessage("Tutte le modifiche salvate con successo!");
-                setTimeout(() => setMessage(""), 3000);
+                setMessage("✅ Modifiche salvate con successo! Aggiorna la home per vederle.");
+                setTimeout(() => setMessage(""), 5000);
+            } else {
+                setMessage(`❌ Errore: ${data.error || 'Salvataggio fallito'} (${res.status})`);
             }
         } catch (err) {
-            setMessage("Errore durante il salvataggio");
+            setMessage(`❌ Errore di rete: ${err.message}`);
         }
     };
 

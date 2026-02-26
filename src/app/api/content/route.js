@@ -1,20 +1,13 @@
 import { NextResponse } from "next/server";
-export const dynamic = "force-dynamic";
-import fs from "fs";
-import path from "path";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/lib/auth";
+import { getSiteContent, saveSiteContent } from "@/lib/contentStore";
 
-const dbPath = path.join(process.cwd(), "src", "lib", "db.json");
-
-function getDb() {
-    if (!fs.existsSync(dbPath)) return { siteContent: {} };
-    return JSON.parse(fs.readFileSync(dbPath, "utf-8"));
-}
+export const dynamic = "force-dynamic";
 
 export async function GET() {
-    const db = getDb();
-    return NextResponse.json(db.siteContent || {});
+    const content = getSiteContent();
+    return NextResponse.json(content);
 }
 
 export async function POST(request) {
@@ -24,11 +17,12 @@ export async function POST(request) {
         return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const newContent = await request.json();
-    const db = getDb();
-
-    db.siteContent = newContent;
-    fs.writeFileSync(dbPath, JSON.stringify(db, null, 4));
-
-    return NextResponse.json({ message: "Content updated successfully" });
+    try {
+        const newContent = await request.json();
+        saveSiteContent(newContent);
+        return NextResponse.json({ message: "Content updated successfully", success: true });
+    } catch (err) {
+        console.error("[API Content] Save error:", err);
+        return NextResponse.json({ error: "Failed to save content", details: err.message }, { status: 500 });
+    }
 }
