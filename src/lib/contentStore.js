@@ -1,68 +1,74 @@
+import db from "./firebase";
 import fs from "fs";
 import path from "path";
 
-const RUNTIME_PATH = "/tmp/azzurra-content.json";
+const COLLECTION = "site";
+const DOC_ID = "content";
 const SOURCE_PATH = path.join(process.cwd(), "src", "lib", "db.json");
 
 /**
- * Reads site content. Checks /tmp/ first (runtime edits),
- * then falls back to the source db.json (build-time data).
+ * Reads site content from Firestore.
+ * Falls back to local db.json if Firestore is not available.
  */
-export function getSiteContent() {
-    // 1. Try reading runtime overrides from /tmp/
-    try {
-        if (fs.existsSync(RUNTIME_PATH)) {
-            const data = JSON.parse(fs.readFileSync(RUNTIME_PATH, "utf-8"));
-            if (data && Object.keys(data).length > 0) {
-                return data;
+export async function getSiteContent() {
+    // Try Firestore first
+    if (db) {
+        try {
+            const doc = await db.collection(COLLECTION).doc(DOC_ID).get();
+            if (doc.exists) {
+                return doc.data();
             }
+        } catch (e) {
+            console.warn("[contentStore] Firestore read failed:", e.message);
         }
-    } catch (e) {
-        console.warn("[contentStore] Could not read runtime content:", e.message);
     }
 
-    // 2. Fall back to source db.json
+    // Fallback: read from local db.json
     try {
-        const db = JSON.parse(fs.readFileSync(SOURCE_PATH, "utf-8"));
-        return db.siteContent || {};
+        const raw = JSON.parse(fs.readFileSync(SOURCE_PATH, "utf-8"));
+        return raw.siteContent || {};
     } catch (e) {
-        console.error("[contentStore] Could not read source db.json:", e.message);
+        console.error("[contentStore] Could not read db.json:", e.message);
         return {};
     }
 }
 
 /**
- * Reads the full database (users, bookings, siteContent).
+ * Saves site content to Firestore.
  */
-export function getFullDb() {
+export async function saveSiteContent(newContent) {
+    if (!db) {
+        return { success: false, error: "Firebase non configurato" };
+    }
+
     try {
-        return JSON.parse(fs.readFileSync(SOURCE_PATH, "utf-8"));
+        await db.collection(COLLECTION).doc(DOC_ID).set(newContent);
+        console.log("[contentStore] Saved to Firestore");
+        return { success: true };
     } catch (e) {
-        return { users: [], bookings: [], siteContent: {} };
+        console.error("[contentStore] Firestore write failed:", e.message);
+        return { success: false, error: e.message };
     }
 }
 
 /**
- * Saves site content to /tmp/ (works on Vercel).
- * Also attempts to write to source db.json (works locally).
+ * Seeds Firestore with the initial data from db.json.
  */
-export function saveSiteContent(newContent) {
-    // Always write to /tmp/ (works on Vercel + local)
-    try {
-        fs.writeFileSync(RUNTIME_PATH, JSON.stringify(newContent, null, 2));
-        console.log("[contentStore] Saved to /tmp/ successfully");
-    } catch (e) {
-        console.error("[contentStore] Failed to write to /tmp/:", e.message);
+export async function seedFirestore() {
+    if (!db) {
+        return { seeded: false, error: "Firebase non configurato. Aggiungi FIREBASE_SERVICE_ACCOUNT_KEY." };
     }
 
-    // Also try to write to source db.json (works locally, fails silently on Vercel)
     try {
-        const db = JSON.parse(fs.readFileSync(SOURCE_PATH, "utf-8"));
-        db.siteContent = newContent;
-        fs.writeFileSync(SOURCE_PATH, JSON.stringify(db, null, 4));
-        console.log("[contentStore] Saved to source db.json");
+        const doc = await db.collection(COLLECTION).doc(DOC_ID).get();
+        if (doc.exists) {
+            return { seeded: false, message: "Dati già presenti in Firestore" };
+        }
+
+        const raw = JSON.parse(fs.readFileSync(SOURCE_PATH, "utf-8"));
+        await db.collection(COLLECTION).doc(DOC_ID).set(raw.siteContent);
+        return { seeded: true, message: "Firestore popolato con i dati di db.json!" };
     } catch (e) {
-        // Expected to fail on Vercel, that's OK
-        console.warn("[contentStore] Could not write to source db.json (expected on Vercel):", e.message);
+        return { seeded: false, error: e.message };
     }
 }

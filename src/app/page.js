@@ -1,12 +1,12 @@
 import BookingCalendar from "@/components/BookingCalendar";
 import SearchForm from "@/components/SearchForm";
 import ContactForm from "@/components/ContactForm";
-import { getSiteContent } from "@/lib/contentStore";
 
 export const dynamic = "force-dynamic";
 
-export default function Home() {
-  const content = getSiteContent();
+export default async function Home() {
+  const { getSiteContent } = await import("@/lib/contentStore");
+  const content = await getSiteContent();
 
   return (
     <div className="relative flex min-h-screen w-full flex-col scroll-smooth">

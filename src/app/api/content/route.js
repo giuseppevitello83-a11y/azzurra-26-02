@@ -1,12 +1,12 @@
 import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/lib/auth";
-import { getSiteContent, saveSiteContent } from "@/lib/contentStore";
 
 export const dynamic = "force-dynamic";
 
 export async function GET() {
-    const content = getSiteContent();
+    const { getSiteContent } = await import("@/lib/contentStore");
+    const content = await getSiteContent();
     return NextResponse.json(content);
 }
 
@@ -18,11 +18,16 @@ export async function POST(request) {
     }
 
     try {
+        const { saveSiteContent } = await import("@/lib/contentStore");
         const newContent = await request.json();
-        saveSiteContent(newContent);
-        return NextResponse.json({ message: "Content updated successfully", success: true });
+        const result = await saveSiteContent(newContent);
+
+        if (result.success) {
+            return NextResponse.json({ message: "Salvato su Firebase!", success: true });
+        } else {
+            return NextResponse.json({ error: result.error }, { status: 500 });
+        }
     } catch (err) {
-        console.error("[API Content] Save error:", err);
-        return NextResponse.json({ error: "Failed to save content", details: err.message }, { status: 500 });
+        return NextResponse.json({ error: err.message }, { status: 500 });
     }
 }
