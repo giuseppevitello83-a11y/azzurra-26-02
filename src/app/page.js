@@ -86,20 +86,42 @@ export default function Home() {
 
         <section id="galleria" className="bg-primary/5 py-24">
           <div className="mx-auto max-w-7xl px-6 md:px-20">
-            <div className="flex flex-col md:flex-row items-end justify-between mb-12 gap-6">
-              <div className="max-w-xl">
-                <h2 className="text-3xl font-bold tracking-tight md:text-4xl">Galleria d'Autore</h2>
-                <p className="mt-4 text-slate-600 dark:text-slate-400">
-                  Esplora l'eleganza degli interni e gli ampi spazi esterni progettati per il tuo relax.
-                </p>
-              </div>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-black mb-4 tracking-tight text-slate-900 dark:text-white">Galleria d'Autore</h2>
+              <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto font-medium">Esplora l'eleganza degli interni e gli ampi spazi esterni progettati per il tuo relax.</p>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 h-[600px]">
-              {content.gallery.map((item, index) => (
-                <div key={item.id} className={`${index === 0 ? 'col-span-2 row-span-2' : ''} rounded-2xl overflow-hidden shadow-lg group`}>
-                  <img alt={item.alt} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src={item.image} />
-                </div>
-              ))}
+
+            <div className="space-y-20">
+              {['Zona Giorno', 'Cucina', 'Camere', 'Bagni', 'Terrazza'].map((category) => {
+                const items = content.gallery.filter(item => item.category === category);
+                if (items.length === 0) return null;
+
+                return (
+                  <div key={category} className="space-y-8">
+                    <div className="flex items-center gap-4">
+                      <h3 className="text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">{category}</h3>
+                      <div className="h-px flex-1 bg-primary/10"></div>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                      {items.map((item, idx) => (
+                        <div
+                          key={item.id}
+                          className={`group relative overflow-hidden rounded-3xl shadow-xl transition-all duration-500 hover:scale-[1.02] ${idx === 0 ? 'md:col-span-2 md:row-span-1' : ''}`}
+                        >
+                          <img
+                            src={item.image}
+                            alt={item.alt}
+                            className="w-full h-full object-cover min-h-[300px] max-h-[500px]"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8">
+                            <p className="text-white font-bold text-lg">{item.alt}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>

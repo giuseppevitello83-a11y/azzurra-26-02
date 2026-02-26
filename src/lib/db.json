@@ -62,24 +62,136 @@
         ],
         "gallery": [
             {
-                "id": "g1",
-                "image": "/images/gallery1.jpg",
-                "alt": "Terrazza Panoramica"
+                "id": "g_ext_1",
+                "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/750997781.jpg?k=af79335bc887dfba6ad888c1802274606a2235dc44c74e8f819c3fd27b298a3c&o=",
+                "alt": "Ampia terrazza con poltrona a dondolo",
+                "category": "Terrazza"
             },
             {
-                "id": "g2",
-                "image": "/images/gallery2.jpg",
-                "alt": "Soggiorno Accogliente"
+                "id": "g_ext_2",
+                "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/750997764.jpg?k=b43c545c2288d9b1a80be962fdc5ac41f06ca91222eb577e25b8c6de4205fd05&o=",
+                "alt": "Vista panoramica dal balcone",
+                "category": "Terrazza"
             },
             {
-                "id": "g3",
-                "image": "/images/gallery3.jpg",
-                "alt": "Camera da Letto Master"
+                "id": "g_ext_3",
+                "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/750997789.jpg?k=a3b2b2d9a9cd4e0d9088a036c023baee97bc487c2cf44ec4f5623dbe090739b5&o=",
+                "alt": "Tavolo esterno in terrazza",
+                "category": "Terrazza"
             },
             {
-                "id": "g4",
-                "image": "/images/gallery4.jpg",
-                "alt": "Cucina Moderna Attrezzata"
+                "id": "g_ext_4",
+                "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/750997746.jpg?k=e298cee5b9332a033d6469779d51ff9dc7ff5dbab0cb21c6541ea1ea51141598&o=",
+                "alt": "Angolo relax in terrazza",
+                "category": "Terrazza"
+            },
+            {
+                "id": "g_ext_5",
+                "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/750997941.jpg?k=336df8d1887ada7d2dc56b68d762f7a5eed6253896cda94ec3c4429aa84b88cf&o=",
+                "alt": "Vista balcone",
+                "category": "Terrazza"
+            },
+            {
+                "id": "g_ext_6",
+                "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/746812875.jpg?k=beb029f6bfd359d2396b53170aa340850025161c0f1918e194d0af510dad87cb&o=",
+                "alt": "Spiaggia di Mondello",
+                "category": "Terrazza"
+            },
+            {
+                "id": "g_liv_1",
+                "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/750997731.jpg?k=2e59203e61ed749fd7b2911470ca1a04aff1e75275350b96fcb74e6a81692ece&o=",
+                "alt": "Area living moderna",
+                "category": "Zona Giorno"
+            },
+            {
+                "id": "g_liv_2",
+                "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/750997784.jpg?k=d073606dbf18634eda9ba8d3ee88ea03fa08a967486af193f5bcd5ba32184cdb&o=",
+                "alt": "Dettaglio zona giorno",
+                "category": "Zona Giorno"
+            },
+            {
+                "id": "g_liv_3",
+                "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/750997773.jpg?k=0f43dca893777eea4e6b628a56873da2d75f0b1a690034fc817561edc24f4e64&o=",
+                "alt": "Soggiorno luminoso",
+                "category": "Zona Giorno"
+            },
+            {
+                "id": "g_kit_1",
+                "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/750997756.jpg?k=9c30df28448e8c1a86bdded121a4c5963639565cc3cbade71afeca80bb743290&o=",
+                "alt": "Cucina completa",
+                "category": "Cucina"
+            },
+            {
+                "id": "g_kit_2",
+                "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/750997800.jpg?k=673672505511fd0ef09539941658b10546c5164d94a7d7717630eb5bf471ea5e&o=",
+                "alt": "Dettaglio cucina",
+                "category": "Cucina"
+            },
+            {
+                "id": "g_bed_1",
+                "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/750997786.jpg?k=466859c761728ec04c4a4d47bba0c8915f685527f14bb1f41ff4beb905920f3b&o=",
+                "alt": "Camera da letto matrimoniale",
+                "category": "Camere"
+            },
+            {
+                "id": "g_bed_2",
+                "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/750997779.jpg?k=b92a24d5265ea7ee19e9d2d96e08e89cc1f0549f4906ed5cea8c492888c4e832&o=",
+                "alt": "Camera doppia",
+                "category": "Camere"
+            },
+            {
+                "id": "g_bed_3",
+                "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/750997734.jpg?k=f21734c8e5834ca59b704cd917b4ad830b2fb7b122d1c72f736487111d4a8da1&o=",
+                "alt": "Armadio camera ospiti",
+                "category": "Camere"
+            },
+            {
+                "id": "g_bed_4",
+                "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/750997798.jpg?k=9d8f7f900eb5fd3832de5de050c2cc3fcb7cc5d4cd349c658a73313a67e29c99&o=",
+                "alt": "Dettaglio pavimenti storici",
+                "category": "Camere"
+            },
+            {
+                "id": "g_bed_5",
+                "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/750997797.jpg?k=4bd1ff4ad9069411a72d10ccf7354bba163a71e1d8cd09c72e0d42bfec1fc00d&o=",
+                "alt": "Interni camera letto",
+                "category": "Camere"
+            },
+            {
+                "id": "g_bed_6",
+                "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/750998009.jpg?k=c1c2b26c2b753b993197e3de6a0bc8e888f690b2f1aca036807f34162ec4639e&o=",
+                "alt": "Vista camera singola",
+                "category": "Camere"
+            },
+            {
+                "id": "g_bath_1",
+                "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/750997750.jpg?k=bcd496a09bc7b916b259b35aed76234b23c2b0a1957e3ee84ee3fbaf5fb096af&o=",
+                "alt": "Bagno principale spazioso",
+                "category": "Bagni"
+            },
+            {
+                "id": "g_bath_2",
+                "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/750997740.jpg?k=9021dc3114899206a7bfd5bd050b40e89b0692a61901b66209c452c146cae7f8&o=",
+                "alt": "Doccia e vasca",
+                "category": "Bagni"
+            },
+            {
+                "id": "g_bath_3",
+                "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/750997780.jpg?k=f8f187531ac681873c284c2d48d92391bc77b3275a4d2be639c1eb9b03bfd112&o=",
+                "alt": "Secondo bagno",
+                "category": "Bagni"
+            },
+            {
+                "id": "g_bath_4",
+                "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/750997760.jpg?k=7a6b11647cac08945ae2f9ae029b2cd09ce6809c7d86f23cb505cf0056f7a9d2&o=",
+                "alt": "Rubinetteria moderna",
+                "category": "Bagni"
+            },
+            {
+                "id": "g_bath_5",
+                "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/750997761.jpg?k=9859f9d09e2fc3bca692e32ef15c9f8aa098e086ef1cc07fd4e27c6cf10838a1&o=",
+                "alt": "Specchio retroilluminato",
+                "category": "Bagni"
             }
         ],
         "reviews": [

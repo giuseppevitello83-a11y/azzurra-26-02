@@ -79,7 +79,8 @@ export default function AdminPage() {
         const newItem = {
             id: `g${Date.now()}`,
             image: "/images/placeholder.jpg",
-            alt: "Nuova Immagine"
+            alt: "Nuova Immagine",
+            category: "Zona Giorno"
         };
         setContent({ ...content, gallery: [...content.gallery, newItem] });
     };
@@ -303,6 +304,15 @@ export default function AdminPage() {
                                                     className="w-full bg-transparent border-b border-slate-200 dark:border-slate-700 py-1 outline-none text-[10px] font-mono"
                                                     value={item.image}
                                                     onChange={(e) => updateGallery(item.id, 'image', e.target.value)}
+                                                />
+                                            </div>
+                                            <div>
+                                                <label className="block text-[10px] font-black uppercase text-slate-400 mb-1">Categoria (es. Cucina)</label>
+                                                <input
+                                                    type="text"
+                                                    className="w-full bg-transparent border-b border-slate-200 dark:border-slate-700 py-1 outline-none text-xs"
+                                                    value={item.category || ""}
+                                                    onChange={(e) => updateGallery(item.id, 'category', e.target.value)}
                                                 />
                                             </div>
                                             <div>
