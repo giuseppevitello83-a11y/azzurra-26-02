@@ -1,0 +1,116 @@
+{
+    "users": [
+        {
+            "id": "1",
+            "username": "admin",
+            "password": "azzurra2026",
+            "name": "Giuseppe Admin",
+            "role": "admin",
+            "email": "admin@azzurravilla.it"
+        },
+        {
+            "id": "2",
+            "username": "guest",
+            "password": "guest",
+            "name": "Marco Rossi",
+            "role": "user",
+            "email": "marco.rossi@example.com"
+        }
+    ],
+    "bookings": [
+        {
+            "id": "B001",
+            "userId": "2",
+            "checkIn": "2026-03-15",
+            "checkOut": "2026-03-22",
+            "status": "Confermata",
+            "total": "1190.00",
+            "property": "Azzurra Apartment"
+        }
+    ],
+    "siteContent": {
+        "hero": {
+            "title": "La tua casa vacanza a Mondello Mediterraneo",
+            "subtitle": "Soggiorni esclusivi tra il fascino del liberty e l'azzurro del mare siciliano.",
+            "backgroundImage": "/images/hero.jpg"
+        },
+        "services": [
+            {
+                "id": "s1",
+                "icon": "pool",
+                "title": "Piscina Privata",
+                "description": "Oasi di relax riservate con vista mozzafiato sul Golfo di Mondello."
+            },
+            {
+                "id": "s2",
+                "icon": "skillet",
+                "title": "Chef a Domicilio",
+                "description": "Assapora i piatti tipici siciliani preparati dai migliori chef locali direttamente in villa."
+            },
+            {
+                "id": "s3",
+                "icon": "beach_access",
+                "title": "Accesso Spiaggia",
+                "description": "Posti riservati e cabine esclusive sul litorale più bello di Palermo."
+            },
+            {
+                "id": "s4",
+                "icon": "support_agent",
+                "title": "Concierge 24/7",
+                "description": "Un assistente personale dedicato per prenotare tour, barche e ristoranti."
+            }
+        ],
+        "gallery": [
+            {
+                "id": "g1",
+                "image": "/images/gallery1.jpg",
+                "alt": "Luxury Villa Exterior"
+            },
+            {
+                "id": "g2",
+                "image": "/images/gallery2.jpg",
+                "alt": "Interior Lounge"
+            },
+            {
+                "id": "g3",
+                "image": "/images/gallery3.jpg",
+                "alt": "Bedroom View"
+            },
+            {
+                "id": "g4",
+                "image": "/images/gallery4.jpg",
+                "alt": "Terrace Dining"
+            }
+        ],
+        "reviews": [
+            {
+                "id": "r1",
+                "name": "Elena Bianchi",
+                "location": "Milano, Italia",
+                "text": "Un'esperienza indimenticabile. La villa era impeccabile e il servizio concierge ci ha consigliato i migliori posti nascosti di Mondello.",
+                "avatar": "/images/reviewer1.jpg",
+                "rating": 5
+            },
+            {
+                "id": "r2",
+                "name": "James Wilson",
+                "location": "London, UK",
+                "text": "Luxury booking made easy. The infinity pool at sunset is something I will never forget. Mondello is truly a gem.",
+                "avatar": "/images/reviewer2.jpg",
+                "rating": 5
+            },
+            {
+                "id": "r3",
+                "name": "Sophie Laurent",
+                "location": "Paris, France",
+                "text": "Sicilia autentica con un tocco di classe. Abbiamo apprezzato moltissimo lo chef privato che ha cucinato per noi la caponata.",
+                "avatar": "/images/reviewer3.jpg",
+                "rating": 4
+            }
+        ],
+        "contact": {
+            "address": "Viale Regina Elena, 90151 Palermo, Sicilia - Italia",
+            "mapImage": "/images/map.jpg"
+        }
+    }
+}

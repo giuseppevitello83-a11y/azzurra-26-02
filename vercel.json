@@ -1,0 +1,11 @@
+{
+    "version": 2,
+    "framework": "nextjs",
+    "regions": [
+        "arn1"
+    ],
+    "env": {
+        "NEXTAUTH_URL": "https://azzurra-26-02.vercel.app",
+        "NEXTAUTH_SECRET": "azzurra-secret-2026"
+    }
+}
