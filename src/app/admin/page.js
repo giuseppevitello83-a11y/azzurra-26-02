@@ -74,6 +74,10 @@ export default function AdminPage() {
         setContent({ ...content, gallery: newGallery });
     };
 
+    const updateContact = (field, value) => {
+        setContent({ ...content, contact: { ...content.contact, [field]: value } });
+    };
+
     if (loading) return <div className="min-h-screen flex items-center justify-center italic">Caricamento...</div>;
 
     return (
@@ -243,6 +247,36 @@ export default function AdminPage() {
                                     </div>
                                 </div>
                             ))}
+                        </div>
+                    </div>
+
+                    {/* CONTACT & ICAL SECTION */}
+                    <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-sm border border-primary/5">
+                        <h2 className="text-lg font-bold mb-6 flex items-center gap-2">
+                            <span className="material-symbols-outlined text-primary">contact_support</span>
+                            Contatti e Sincronizzazione iCal
+                        </h2>
+                        <div className="space-y-4">
+                            <div>
+                                <label className="block text-[10px] font-black uppercase text-slate-400 mb-1">Indirizzo Struttura</label>
+                                <input
+                                    type="text"
+                                    className="w-full bg-slate-50 dark:bg-slate-900 border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary outline-none text-sm"
+                                    value={content?.contact?.address || ""}
+                                    onChange={(e) => updateContact('address', e.target.value)}
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-[10px] font-black uppercase text-slate-400 mb-1">Link iCal (Booking.com Export)</label>
+                                <input
+                                    type="text"
+                                    className="w-full bg-slate-50 dark:bg-slate-900 border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary outline-none text-sm font-mono"
+                                    placeholder="https://ical.booking.com/v1/export?t=..."
+                                    value={content?.contact?.icalUrl || ""}
+                                    onChange={(e) => updateContact('icalUrl', e.target.value)}
+                                />
+                                <p className="mt-1 text-[9px] text-slate-400">Incolla qui il link di esportazione che trovi nell'Extranet di Booking.com</p>
+                            </div>
                         </div>
                     </div>
 

@@ -30,87 +30,88 @@
     ],
     "siteContent": {
         "hero": {
-            "title": "La tua casa vacanza a Mondello Mediterraneo",
-            "subtitle": "Soggiorni esclusivi tra il fascino del liberty e l'azzurro del mare siciliano.",
+            "title": "Azzurra Apartment Mondello",
+            "subtitle": "Casa Vacanza a due passi dal Mare. Il tuo rifugio di relax a 800 metri dalla spiaggia di Mondello.",
             "backgroundImage": "/images/hero.jpg"
         },
         "services": [
             {
                 "id": "s1",
-                "icon": "pool",
-                "title": "Piscina Privata",
-                "description": "Oasi di relax riservate con vista mozzafiato sul Golfo di Mondello."
+                "icon": "hot_tub",
+                "title": "Vasca Idromassaggio",
+                "description": "Rilassati nella nostra esclusiva vasca idromassaggio dopo una giornata di mare."
             },
             {
                 "id": "s2",
-                "icon": "skillet",
-                "title": "Chef a Domicilio",
-                "description": "Assapora i piatti tipici siciliani preparati dai migliori chef locali direttamente in villa."
+                "icon": "wifi",
+                "title": "WiFi Gratuito",
+                "description": "Connessione ultra-veloce disponibile in tutta la struttura per lavoro o svago."
             },
             {
                 "id": "s3",
-                "icon": "beach_access",
-                "title": "Accesso Spiaggia",
-                "description": "Posti riservati e cabine esclusive sul litorale più bello di Palermo."
+                "icon": "local_parking",
+                "title": "Parcheggio Privato",
+                "description": "Posto auto riservato e gratuito all'interno della proprietà."
             },
             {
                 "id": "s4",
-                "icon": "support_agent",
-                "title": "Concierge 24/7",
-                "description": "Un assistente personale dedicato per prenotare tour, barche e ristoranti."
+                "icon": "ac_unit",
+                "title": "Aria Condizionata",
+                "description": "Ambienti freschi e climatizzati per il massimo comfort in ogni stagione."
             }
         ],
         "gallery": [
             {
                 "id": "g1",
                 "image": "/images/gallery1.jpg",
-                "alt": "Luxury Villa Exterior"
+                "alt": "Terrazza Panoramica"
             },
             {
                 "id": "g2",
                 "image": "/images/gallery2.jpg",
-                "alt": "Interior Lounge"
+                "alt": "Soggiorno Accogliente"
             },
             {
                 "id": "g3",
                 "image": "/images/gallery3.jpg",
-                "alt": "Bedroom View"
+                "alt": "Camera da Letto Master"
             },
             {
                 "id": "g4",
                 "image": "/images/gallery4.jpg",
-                "alt": "Terrace Dining"
+                "alt": "Cucina Moderna Attrezzata"
             }
         ],
         "reviews": [
             {
                 "id": "r1",
-                "name": "Elena Bianchi",
-                "location": "Milano, Italia",
-                "text": "Un'esperienza indimenticabile. La villa era impeccabile e il servizio concierge ci ha consigliato i migliori posti nascosti di Mondello.",
+                "name": "Antonino",
+                "location": "Italia",
+                "text": "Ottima accoglienza e attenzione ai dettagli. Spazi interni ed esterni ampi, vicinanza al mare e ai ristoranti. Frutta fresca e colazione all'arrivo.",
                 "avatar": "/images/reviewer1.jpg",
                 "rating": 5
             },
             {
                 "id": "r2",
-                "name": "James Wilson",
-                "location": "London, UK",
-                "text": "Luxury booking made easy. The infinity pool at sunset is something I will never forget. Mondello is truly a gem.",
+                "name": "Fernanda",
+                "location": "UK",
+                "text": "Everything was perfect. The location is convenient (10 min from the beach, 5 min from shops). Incredible communication and kindness.",
                 "avatar": "/images/reviewer2.jpg",
                 "rating": 5
             },
             {
                 "id": "r3",
-                "name": "Sophie Laurent",
-                "location": "Paris, France",
-                "text": "Sicilia autentica con un tocco di classe. Abbiamo apprezzato moltissimo lo chef privato che ha cucinato per noi la caponata.",
+                "name": "Elena",
+                "location": "Germany",
+                "text": "The host was very kind. The fridge was full of drinks and fruit upon arrival. A great stay in Mondello!",
                 "avatar": "/images/reviewer3.jpg",
-                "rating": 4
+                "rating": 5
             }
         ],
         "contact": {
-            "address": "Viale Regina Elena, 90151 Palermo, Sicilia - Italia",
-            "mapImage": "/images/map.jpg"
+            "address": "Viale Cloe, 7, 90149 Palermo, Italia",
+            "mapImage": "/images/map.jpg",
+            "icalUrl": ""
         }
     }
 }

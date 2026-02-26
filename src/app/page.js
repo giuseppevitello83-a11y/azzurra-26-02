@@ -1,5 +1,8 @@
 import fs from "fs";
 import path from "path";
+import BookingCalendar from "@/components/BookingCalendar";
+import SearchForm from "@/components/SearchForm";
+import ContactForm from "@/components/ContactForm";
 
 export default function Home() {
   const dbPath = path.join(process.cwd(), "src", "lib", "db.json");
@@ -7,86 +10,65 @@ export default function Home() {
   const content = db.siteContent;
 
   return (
-    <div className="relative flex min-h-screen w-full flex-col">
+    <div className="relative flex min-h-screen w-full flex-col scroll-smooth">
       <header className="sticky top-0 z-50 w-full border-b border-primary/10 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md px-6 md:px-20 py-4">
         <div className="mx-auto flex max-w-7xl items-center justify-between">
           <div className="flex items-center gap-2 text-primary">
             <span className="material-symbols-outlined text-3xl">villa</span>
-            <h2 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">Mondello Mediterraneo</h2>
+            <h2 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">{content.hero.title}</h2>
           </div>
           <nav className="hidden md:flex items-center gap-8">
-            <a className="text-sm font-semibold hover:text-primary transition-colors" href="#">Ville</a>
-            <a className="text-sm font-semibold hover:text-primary transition-colors" href="#">Servizi</a>
-            <a className="text-sm font-semibold hover:text-primary transition-colors" href="#">Esperienze</a>
-            <a className="text-sm font-semibold hover:text-primary transition-colors" href="#">Contatti</a>
+            <a className="text-sm font-semibold hover:text-primary transition-colors" href="#appartamento">Appartamento</a>
+            <a className="text-sm font-semibold hover:text-primary transition-colors" href="#servizi">Servizi</a>
+            <a className="text-sm font-semibold hover:text-primary transition-colors" href="#galleria">Galleria</a>
+            <a className="text-sm font-semibold hover:text-primary transition-colors" href="#recensioni">Recensioni</a>
+            <a className="text-sm font-semibold hover:text-primary transition-colors" href="#contatti">Dove Siamo</a>
           </nav>
           <div className="flex items-center gap-4">
-            <a href="/auth" className="rounded-lg bg-primary px-5 py-2.5 text-sm font-bold text-white shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all">
+            <a href="/auth" className="rounded-lg bg-primary/10 px-5 py-2.5 text-sm font-bold text-primary hover:bg-primary hover:text-white transition-all">
               Area Riservata
             </a>
-            <div className="h-10 w-10 overflow-hidden rounded-full border-2 border-primary/20 bg-slate-200">
-              <img alt="Profile" className="h-full w-full object-cover" src="/images/avatar.jpg" />
-            </div>
           </div>
         </div>
       </header>
 
       <main className="flex-1">
-        <section className="relative h-[85vh] w-full overflow-hidden">
+        <section id="appartamento" className="relative min-h-[90vh] w-full overflow-hidden flex items-center">
           <div
-            className="absolute inset-0 bg-cover bg-center transition-transform duration-1000"
+            className="absolute inset-0 bg-cover bg-center"
             style={{
-              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url('${content.hero.backgroundImage}')`
+              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url('${content.hero.backgroundImage}')`
             }}
           >
           </div>
-          <div className="relative flex h-full flex-col items-center justify-center px-4 text-center">
-            <h1 className="max-w-4xl text-5xl font-black tracking-tight text-white md:text-7xl">
-              {content.hero.title}
-            </h1>
-            <p className="mt-6 max-w-2xl text-lg font-medium text-white/90 md:text-xl">
-              {content.hero.subtitle}
-            </p>
-            <div className="mt-12 w-full max-w-4xl rounded-2xl bg-white/95 dark:bg-background-dark/95 p-2 shadow-2xl backdrop-blur-sm">
-              <div className="flex flex-col md:flex-row items-stretch gap-2">
-                <div className="flex flex-1 items-center gap-3 px-4 py-3 border-b md:border-b-0 md:border-r border-slate-200 dark:border-slate-700">
-                  <span className="material-symbols-outlined text-primary">location_on</span>
-                  <div className="flex flex-col items-start">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Destinazione</span>
-                    <input className="w-full border-none bg-transparent p-0 text-sm font-bold focus:ring-0 placeholder:text-slate-400" placeholder="Mondello, Palermo" type="text" />
-                  </div>
-                </div>
-                <div className="flex flex-1 items-center gap-3 px-4 py-3 border-b md:border-b-0 md:border-r border-slate-200 dark:border-slate-700">
-                  <span className="material-symbols-outlined text-primary">calendar_month</span>
-                  <div className="flex flex-col items-start">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Check-in / Out</span>
-                    <input className="w-full border-none bg-transparent p-0 text-sm font-bold focus:ring-0 placeholder:text-slate-400" placeholder="Scegli date" type="password" />
-                  </div>
-                </div>
-                <div className="flex flex-1 items-center gap-3 px-4 py-3">
-                  <span className="material-symbols-outlined text-primary">group</span>
-                  <div className="flex flex-col items-start">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Ospiti</span>
-                    <input className="w-full border-none bg-transparent p-0 text-sm font-bold focus:ring-0 placeholder:text-slate-400" placeholder="Quante persone?" type="text" />
-                  </div>
-                </div>
-                <button className="flex items-center justify-center gap-2 rounded-xl bg-primary px-8 py-4 text-sm font-bold text-white transition-all hover:bg-primary/90 md:w-auto">
-                  <span className="material-symbols-outlined">search</span>
-                  <span>Cerca</span>
-                </button>
-              </div>
+          <div className="relative z-10 mx-auto max-w-7xl flex flex-col lg:flex-row items-center justify-between px-6 md:px-20 gap-12 py-20 w-full">
+            <div className="flex-1 text-left">
+              <span className="inline-block px-4 py-1.5 rounded-full bg-primary/20 text-white text-[10px] font-black uppercase tracking-[0.2em] mb-6 border border-white/10">
+                Lusso a due passi dal mare
+              </span>
+              <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-white mb-8 leading-[0.9]">
+                {content.hero.title}
+              </h1>
+              <p className="text-xl md:text-2xl font-medium text-white/80 max-w-xl leading-relaxed">
+                {content.hero.subtitle}
+              </p>
+
+              <SearchForm />
+            </div>
+            <div className="w-full lg:w-[450px]">
+              <BookingCalendar />
             </div>
           </div>
         </section>
 
-        <section className="mx-auto max-w-7xl px-6 py-24 md:px-20">
+        <section id="servizi" className="mx-auto max-w-7xl px-6 py-24 md:px-20">
           <div className="mb-16 text-center">
-            <h2 className="text-3xl font-bold tracking-tight md:text-4xl">I Nostri Servizi Esclusivi</h2>
+            <h2 className="text-3xl font-bold tracking-tight md:text-4xl text-slate-900 dark:text-white">Comfort & Relais</h2>
             <div className="mt-4 mx-auto h-1.5 w-20 rounded-full bg-primary/20">
               <div className="h-full w-1/2 rounded-full bg-primary"></div>
             </div>
             <p className="mt-6 text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-              Ogni dettaglio è curato per offrirvi un'esperienza indimenticabile nel cuore della Sicilia.
+              Soggiorna in un attico di 90mq con doppia terrazza, vasca idromassaggio e tutti i comfort moderni a soli 10 minuti a piedi dalla spiaggia di Mondello.
             </p>
           </div>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -102,13 +84,13 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="bg-primary/5 py-24">
+        <section id="galleria" className="bg-primary/5 py-24">
           <div className="mx-auto max-w-7xl px-6 md:px-20">
             <div className="flex flex-col md:flex-row items-end justify-between mb-12 gap-6">
               <div className="max-w-xl">
                 <h2 className="text-3xl font-bold tracking-tight md:text-4xl">Galleria d'Autore</h2>
                 <p className="mt-4 text-slate-600 dark:text-slate-400">
-                  Esplora l'eleganza delle nostre dimore.
+                  Esplora l'eleganza degli interni e gli ampi spazi esterni progettati per il tuo relax.
                 </p>
               </div>
             </div>
@@ -122,9 +104,10 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="py-24 px-6 md:px-20 mx-auto max-w-7xl">
+        <section id="recensioni" className="py-24 px-6 md:px-20 mx-auto max-w-7xl">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold tracking-tight">Cosa dicono di noi</h2>
+            <p className="text-sm text-primary font-bold mt-2">Eccellente 9.3/10 su Booking.com</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {content.reviews.map((review) => (
@@ -139,7 +122,7 @@ export default function Home() {
                 </p>
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-full overflow-hidden bg-slate-200">
-                    <img alt={review.name} src={review.avatar} />
+                    <img alt={review.name} src={review.avatar} className="w-full h-full object-cover" />
                   </div>
                   <div>
                     <h4 className="font-bold text-sm">{review.name}</h4>
@@ -151,27 +134,56 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="h-[450px] w-full relative">
-          <div className="absolute inset-0 bg-slate-200">
-            <img alt="Map Background" className="w-full h-full object-cover grayscale opacity-50" src={content.contact.mapImage} />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-              <div className="relative">
-                <span className="material-symbols-outlined text-primary text-5xl animate-bounce">location_on</span>
-                <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-4 h-4 bg-primary/20 rounded-full blur-sm"></div>
+        <section id="contatti" className="py-24 bg-slate-50 dark:bg-slate-900/50">
+          <div className="mx-auto max-w-7xl px-6 md:px-20 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <h2 className="text-4xl font-black mb-6 tracking-tight">Contattaci per informazioni</h2>
+              <p className="text-lg text-slate-600 dark:text-slate-400 mb-8">
+                Hai domande sulla struttura o vuoi organizzare un arrivo speciale? Scrivici e ti risponderemo il prima possibile.
+              </p>
+              <ContactForm />
+            </div>
+            <div className="h-[500px] w-full relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white dark:border-slate-800">
+              <img alt="Map Background" className="w-full h-full object-cover" src={content.contact.mapImage} />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                <div className="relative">
+                  <span className="material-symbols-outlined text-primary text-6xl drop-shadow-lg">location_on</span>
+                </div>
+              </div>
+              <div className="absolute bottom-6 left-6 right-6 bg-white/95 dark:bg-slate-900/95 p-6 rounded-2xl shadow-xl backdrop-blur-sm border border-primary/10">
+                <h3 className="font-bold text-lg mb-1">Azzurra Apartment</h3>
+                <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">{content.contact.address}</p>
+                <a
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(content.contact.address)}`}
+                  target="_blank"
+                  className="inline-block w-full py-3 bg-primary text-white text-center text-xs font-bold rounded-xl hover:bg-primary/90 transition-all"
+                >
+                  Apri in Google Maps
+                </a>
               </div>
             </div>
-          </div>
-          <div className="absolute bottom-8 left-8 bg-white dark:bg-background-dark p-6 rounded-2xl shadow-xl border border-primary/10 max-w-xs">
-            <h3 className="font-bold text-lg mb-2">Dove Siamo</h3>
-            <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">{content.contact.address}</p>
-            <button className="w-full py-2 bg-primary text-white text-xs font-bold rounded-lg hover:bg-primary/90">Ottieni indicazioni</button>
           </div>
         </section>
       </main>
 
       <footer className="bg-slate-900 text-slate-300 py-16">
-        <div className="mx-auto max-w-7xl px-6 md:px-20 text-center text-xs text-slate-500">
-          © 2026 Mondello Mediterraneo Luxury Rentals. Tutti i diritti riservati.
+        <div className="mx-auto max-w-7xl px-6 md:px-20 grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div className="space-y-4">
+            <h3 className="text-white font-bold text-lg italic">Azzurra Apartment</h3>
+            <p className="text-xs leading-relaxed opacity-60">Comfort e lusso a due passi dal mare di Mondello. Una casa vacanze pensata per offrirvi il meglio della Sicilia.</p>
+          </div>
+          <div></div>
+          <div className="text-right">
+            <p className="text-[10px] font-black uppercase tracking-[0.2em] mb-4 text-primary">Seguici</p>
+            <div className="flex justify-end gap-4">
+              <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary/20 cursor-pointer transition-all">
+                <span className="material-symbols-outlined text-lg">public</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="mx-auto max-w-7xl px-6 md:px-20 mt-16 pt-8 border-t border-white/5 text-center text-[10px] text-slate-500 font-bold uppercase tracking-widest">
+          © 2026 Azzurra Apartment Mondello. Tutti i diritti riservati.
         </div>
       </footer>
     </div>
