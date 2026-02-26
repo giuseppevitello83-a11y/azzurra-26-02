@@ -111,7 +111,7 @@
         "contact": {
             "address": "Viale Cloe, 7, 90149 Palermo, Italia",
             "mapImage": "/images/map.jpg",
-            "icalUrl": ""
+            "icalUrl": "https://ical.booking.com/v1/export/t/c95bacdf-9af0-4938-82b1-b2f2ba4884ab.ics"
         }
     }
 }
